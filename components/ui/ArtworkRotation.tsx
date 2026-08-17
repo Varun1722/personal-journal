@@ -3,62 +3,47 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { DRAWINGS_URL } from "@/config/constants";
-import { SketchIcon, ENAME_RATIO, CNAME_RATIO } from "./SketchIcon";
+import { PAINTINGS_URL } from "@/config/constants";
+import { SketchIcon, SIGNATURE_RATIO } from "./SketchIcon";
 
 const NameHeader = () => (
   <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
-    <div className="flex flex-col items-center gap-3">
-      <Link href="/">
+    <div className="flex flex-col items-center">
+      <Link href="/" className="w-44 md:w-56">
         <SketchIcon
-          src="/icons/ename.svg"
-          label="BENEDICT NEO"
-          className="w-28 md:w-36"
-          style={{ aspectRatio: ENAME_RATIO }}
-        />
-      </Link>
-      <Link href="/about">
-        <SketchIcon
-          src="/icons/cname.svg"
-          label="梁耀恩"
-          className="w-20 md:w-24"
-          style={{ aspectRatio: CNAME_RATIO }}
+          src="/icons/varun_goyal_signature.svg"
+          label="Varun Goyal"
+          className="w-full"
+          style={{ aspectRatio: SIGNATURE_RATIO }}
         />
       </Link>
     </div>
   </div>
 );
 
-const SKETCHES = [
-  "sunflowersketch.png",
-  "handrose.png",
-  "peony.png",
-  "hummingbird.png",
-  "howl.png",
-  "hokusai.png",
-  "christ.png",
-  "metro.png",
-  "wave.png",
-  "room.png",
-  "angel.png",
-  "icons.jpg",
-  "psalms.png",
+const PAINTINGS = [
+  "sistine-chappel.jpg",
+  "the-vitruvian-man.jpg",
+  "raja-ravi-verma-rama.jpg",
+  "the-last-supper.webp",
+  "great-wave-of-kanagawa.jpg",
+  "the-starry-night.webp",
 ] as const;
 
-const SKETCH_PATHS = SKETCHES.map((f) => `${DRAWINGS_URL}/${f}`);
+const PAINTING_PATHS = PAINTINGS.map((f) => `${PAINTINGS_URL}/${f}`);
 
 const INTERVAL = 1000;
 
 function altOf(index: number) {
   return (
-    SKETCHES[index].replace(/\.[^.]+$/, "").replace(/[-_]/g, " ") + " sketch"
+    PAINTINGS[index].replace(/\.[^.]+$/, "").replace(/[-_]/g, " ") + " painting"
   );
 }
 
 type Layer = { index: number; id: number };
 
 export default function ArtworkRotation() {
-  // `current` is on screen; `pending` is the next drawing, mounted invisible
+  // `current` is on screen; `pending` is the next painting, mounted invisible
   // only so the browser fetches and decodes it. Ids are monotonic, so a slow
   // decode that resolves after it has been superseded is simply ignored.
   const [current, setCurrent] = useState<Layer>({ index: 0, id: 0 });
@@ -71,7 +56,7 @@ export default function ArtworkRotation() {
     const timer = setInterval(() => {
       setCurrent((shown) => {
         setPending({
-          index: (shown.index + 1) % SKETCH_PATHS.length,
+          index: (shown.index + 1) % PAINTING_PATHS.length,
           id: shown.id + 1,
         });
         return shown;
@@ -100,7 +85,7 @@ export default function ArtworkRotation() {
       <div className="h-screen w-full flex flex-col items-center justify-center pt-10 px-4 md:px-8 overflow-hidden">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-6 w-full max-w-[min(85vw,700px)] md:max-w-[min(60vw,600px)]">
           <Link
-            href="/sketch"
+            href="/gallery"
             className="relative w-full aspect-square max-h-[calc(100vh-320px)] md:max-h-[calc(100vh-280px)] cursor-pointer"
             onPointerEnter={() => setPaused(true)}
             onPointerLeave={() => setPaused(false)}
@@ -113,7 +98,7 @@ export default function ArtworkRotation() {
                 layer ? (
                   <Image
                     key={layer.id}
-                    src={SKETCH_PATHS[layer.index]}
+                    src={PAINTING_PATHS[layer.index]}
                     alt={layer.id === current.id ? altOf(layer.index) : ""}
                     aria-hidden={layer.id !== current.id}
                     fill

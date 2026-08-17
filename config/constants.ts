@@ -1,4 +1,7 @@
 export const DRAWINGS_URL = "/images/drawings";
+// Published paintings live in R2 and are shared by the homepage and gallery.
+export const PAINTINGS_URL = "/images/gallery/paintings";
+export const GALLERY_PREFIX = "gallery/";
 
 export const VOYAGE_MODEL = "voyage-3.5-lite";
 

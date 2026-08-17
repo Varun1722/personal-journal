@@ -2,6 +2,7 @@ import { POSTS_DIR } from "@/config/paths";
 import { scanMarkdownDir } from "./markdown";
 import { getImageMeta, type ImageMeta } from "./imageMeta";
 import { r2ListImages } from "@/utils/r2";
+import { GALLERY_PREFIX } from "@/config/constants";
 
 export interface GalleryImage {
   filename: string;
@@ -16,9 +17,8 @@ export interface GalleryImage {
 export async function getGalleryImages(): Promise<GalleryImage[]> {
   let filenames: string[];
   try {
-    // Root-level images only (subdirs like uses/ and drawings/ are not gallery content)
-    filenames = (await r2ListImages()).filter(
-      (name) => !name.includes("/") && /\.(jpg|jpeg|png|gif|webp)$/i.test(name)
+    filenames = (await r2ListImages(GALLERY_PREFIX)).filter((name) =>
+      /\.(jpg|jpeg|png|gif|webp)$/i.test(name)
     );
   } catch (error) {
     console.warn("⚠️  Could not list R2 images, gallery will be empty:", error);
