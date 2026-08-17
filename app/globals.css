@@ -329,6 +329,12 @@ body {
   color: var(--color-chalk-strong);
 }
 
+/* Poster cards are clickable without using the journal's hand-drawn link
+   underline, which would otherwise sit beneath every individual film. */
+.prose a.letterboxd-film::after {
+  content: none;
+}
+
 /* Looks identical to a real link — clicking it cycles instead of navigating */
 .prose button.start-interest {
   display: inline;

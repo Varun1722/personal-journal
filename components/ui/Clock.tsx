@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 
-const TIMEZONE = "America/New_York";
+const TIMEZONE = "Asia/Kolkata";
 
 function subscribe(onTick: () => void) {
   const id = setInterval(onTick, 1000);

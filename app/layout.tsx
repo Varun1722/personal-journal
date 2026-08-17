@@ -9,16 +9,20 @@ import ThemeSwitch from "@/components/ui/ThemeSwitch";
 import PaletteSwitch from "@/components/ui/PaletteSwitch";
 import SearchModal from "@/components/ui/SearchModal";
 import { RandomPostListener } from "@/components/layout/RandomPostListener";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/config/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bneo.xyz"),
-  title: "benneo",
-  description: "writing daily",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
   openGraph: {
-    title: "Benedict Neo",
-    description: "writing daily",
-    url: "https://bneo.xyz",
-    siteName: "Benedict Neo",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
   },
@@ -34,7 +38,8 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Benedict Neo",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     card: "summary_large_image",
   },
 };

@@ -1,24 +1,26 @@
-done?
+# projects
 
-- [scribesystem](https://scribesystem.vercel.app): retro writing assistant with custom styles
-- [aha](https://github.com/benthecoder/aha): chrome extension that explains anything with llama 3.1 + exa.ai api
-- [deeptalks](https://deeptalks.vercel.app): an app for introspective questions for you and your loved ones
+## done?
 
-ideas
+- [small-GPT](https://github.com/Varun1722/super-miniGPT): built a small language model from scratch
+- [voice-M.D.](https://github.com/Varun1722/Pharmacy-Voice-Agent): a voice-enabled virtual pharmacy assistant for interacting with a pharmacy system
+- [pep-guardiola-system](https://github.com/Varun1722/Player-ReID): football analysis system focused on player re-identification
 
-- eink display desk accessory
-- muni bus app live widget ios
+## research?
 
----
+- drug repurposing using knowledge graphs — ongoing
 
-inspirations
+## learnings?
 
-- [jaclyn](https://www.straightupjac.xyz/projects)
-- [Varun Shenoy](https://varunshenoy.com/projects.html)
-- [Alicia Guo](https://www.aliciaguo.com/artifacts/)
-- [Kartik Agaram](https://akkartik.name/code)
-- [Ray Del Vecchio](https://raydelv.tech/technology)
-- [Alex Reichert](https://www.alexreichert.com/projects)
-- [Keane Moraes](https://www.itskeane.info/projects)
-- [straightupjac](https://www.straightupjac.xyz/thoughts/ideas)
-- [Minn Kim](https://x.com/minney_cat/status/1045046502417031168)
+- progan: replicating the original ProGAN paper to better understand generative adversarial networks
+- [agents](https://github.com/Varun1722/generative-ai-with-langchain-2nd-Edition): learning and implementing agents with *Generative AI with LangChain*
+- [deep-ml](https://github.com/Varun1722/ML-from-Scratch): coding machine-learning algorithms from scratch in Python
+- [alchemist-novice](https://github.com/Varun1722/nlp-project): first NLP project
+- [medical-chatbot](https://github.com/Varun1722/AI_Reinforcement_Learning/tree/main/LLM-Medical): fine-tuned Llama 2 on a medical dataset
+- [reinforcement-learning](https://github.com/Varun1722/AI_Reinforcement_Learning/tree/main): learned Q-learning and deep Q-learning
+
+<!--
+## ideas
+
+- a short note about something you want to make
+-->

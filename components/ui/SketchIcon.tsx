@@ -39,5 +39,4 @@ export function SketchIcon({
 
 // Intrinsic aspect ratios of the wordmark SVGs, needed because a masked span
 // has no intrinsic size the way an <img> does.
-export const ENAME_RATIO = "634.91 / 148.2";
-export const CNAME_RATIO = "448.27 / 134.14";
+export const SIGNATURE_RATIO = "457 / 142";

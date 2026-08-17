@@ -1,6 +1,11 @@
 import type { ComponentType } from "react";
-import Image from "next/image";
-import { Scroll, Camera, Pencil, Box, Play, Code2 } from "lucide-react";
+import type { Metadata } from "next";
+import { Box, Code2, Pencil, Play, Scroll } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "findme",
+  description: "Places to find Varun Goyal online.",
+};
 
 type LinkItemProps = {
   href: string;
@@ -10,6 +15,8 @@ type LinkItemProps = {
 const LinkItem = ({ href, children }: LinkItemProps) => (
   <a
     href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="opacity-75 hover:opacity-100 transition-opacity duration-150"
   >
     {children}
@@ -17,11 +24,12 @@ const LinkItem = ({ href, children }: LinkItemProps) => (
 );
 
 type LinkSectionProps = {
+  id: string;
   icon: ComponentType<{ className?: string }>;
   links: { href: string; text: string }[];
 };
 
-const LinkSection = ({ icon: Icon, links }: LinkSectionProps) => (
+const LinkSection = ({ icon: Icon, links }: Omit<LinkSectionProps, "id">) => (
   <div className="flex items-center gap-2">
     <Icon className="opacity-40 text-sm shrink-0" />
     <div>
@@ -37,82 +45,59 @@ const LinkSection = ({ icon: Icon, links }: LinkSectionProps) => (
 
 const SECTIONS: LinkSectionProps[] = [
   {
+    id: "social",
     icon: Scroll,
     links: [
-      { href: "https://twitter.com/benxneo", text: "twitter" },
-      { href: "https://www.linkedin.com/in/benedictneo/", text: "linkedin" },
+      { href: "https://x.com/Neptunevg", text: "twitter" },
+      {
+        href: "https://www.linkedin.com/in/varun-goyal17/",
+        text: "linkedin",
+      },
     ],
   },
   {
-    icon: Camera,
-    links: [
-      { href: "https://vsco.co/benxneo/gallery", text: "vsco" },
-      { href: "https://www.instagram.com/benthesaint/", text: "instagram" },
-      { href: "https://www.corner.inc/benedict", text: "corner" },
-    ],
-  },
-  {
+    id: "writing",
     icon: Pencil,
     links: [
-      { href: "https://substack.com/@bneo", text: "substack" },
-      { href: "https://benedictxneo.medium.com/", text: "medium" },
-      { href: "https://goodreads.com/bneo", text: "goodreads" },
+      { href: "https://substack.com/@neptune17", text: "substack" },
+      { href: "https://www.goodreads.com/neptunevg", text: "goodreads" },
     ],
   },
   {
+    id: "curiosities",
     icon: Box,
-    links: [
-      { href: "https://www.are.na/benedict-neo", text: "are.na" },
-      { href: "https://curius.app/benedict-neo", text: "curius" },
-      { href: "https://www.cosmos.so/benedictneo", text: "cosmos" },
-    ],
+    links: [{ href: "https://curius.app/varun-goyal", text: "curius" }],
   },
   {
+    id: "watching",
     icon: Play,
     links: [
       {
-        href: "https://open.spotify.com/user/31w6rspp4fe5ihwoimt4of5tcwiu",
-        text: "spotify",
+        href: "https://music.youtube.com/@varungoyal940",
+        text: "youtube music",
       },
-      { href: "https://www.youtube.com/@benxneo", text: "youtube" },
-      { href: "https://letterboxd.com/benneo/", text: "letterboxd" },
+      { href: "https://letterboxd.com/neptune17/", text: "letterboxd" },
+      { href: "https://serializd.com/user/Neptune17/", text: "serializd" },
     ],
   },
   {
+    id: "code",
     icon: Code2,
-    links: [
-      { href: "https://github.com/benthecoder", text: "github" },
-      {
-        href: "https://www.kaggle.com/benthecoder/competitions",
-        text: "kaggle",
-      },
-    ],
+    links: [{ href: "https://github.com/Varun1722", text: "github" }],
   },
 ];
 
 const ContactPage = () => (
   <div>
     <article className="prose">
-      {/* `not-prose` opts out of the 65vh cap that keeps inline post images
-          from dominating a page — here the photo is the point, so it runs
-          the full column width. */}
-      <Image
-        src="/images/havetea.jpeg"
-        alt="have tea"
-        width={800}
-        height={600}
-        className="not-prose mb-4 w-full h-auto rounded-sm shadow-xs"
-        priority
-      />
+      <p>lover of tea and good conversation.</p>
 
-      <p>lover of tea and good conversations</p>
-
-      <p>email: thisis[firstname][lastname][at]gmail[dot]com</p>
+      <p>email: varun170402[at]gmail[dot]com</p>
 
       <div className="space-y-0 leading-relaxed">
         {SECTIONS.map((section) => (
           <LinkSection
-            key={section.links[0].href}
+            key={section.id}
             icon={section.icon}
             links={section.links}
           />

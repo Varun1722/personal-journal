@@ -1,7 +1,7 @@
 import { getPostContent, getPostMetadata } from "@/utils/content/posts";
 import { getRelatedPosts } from "@/utils/content/related";
 import { getPostPreviewData } from "@/utils/content/preview";
-import { SITE_URL } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import RenderPost from "@/components/posts/RenderPost";
 import MarkdownContent from "@/components/posts/MarkdownContent";
 import { extractToc } from "@/utils/content/toc";
@@ -76,11 +76,11 @@ const PostPage = async ({ params }: { params: Params }) => {
     headline: post.title,
     datePublished: post.date,
     dateModified: post.date,
-    url: `https://bneo.xyz/posts/${slug}`,
+    url: `${SITE_URL}/posts/${slug}`,
     author: {
       "@type": "Person",
-      name: "Benedict Neo",
-      url: "https://bneo.xyz",
+      name: SITE_NAME,
+      url: SITE_URL,
     },
     wordCount: post.wordcount,
   };
