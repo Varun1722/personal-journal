@@ -1,12 +1,22 @@
 import { neon } from "@neondatabase/serverless";
+import { NextRequest } from "next/server";
+import { checkAdminAuth } from "@/utils/adminAuth";
 
 const sql = neon(process.env.POSTGRES_URL!);
 
 export const runtime = "edge";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  const authError = checkAdminAuth(request);
+  if (authError) return authError;
+
   const body = await request.json();
-  const content = (body.body || "").slice(0, 700);
+  const content = (body.body || "").trim().slice(0, 700);
+  if (!content) {
+    return new Response(JSON.stringify({ error: "Thought cannot be empty" }), {
+      status: 400,
+    });
+  }
 
   try {
     const result =
@@ -22,7 +32,10 @@ export async function POST(request: Request) {
   }
 }
 
-export async function DELETE(request: Request) {
+export async function DELETE(request: NextRequest) {
+  const authError = checkAdminAuth(request);
+  if (authError) return authError;
+
   const body = await request.json();
   const id = body.id;
 
