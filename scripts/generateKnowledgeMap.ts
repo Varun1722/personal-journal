@@ -1,4 +1,10 @@
-import "dotenv/config";
+import * as dotenv from "dotenv";
+
+// `tsx` does not load Next.js's `.env.local` automatically. Keep the build
+// helper aligned with local Next development while preserving real deployment
+// environment variables (dotenv never overwrites an existing value by default).
+dotenv.config({ path: ".env.local" });
+dotenv.config();
 import { neon } from "@neondatabase/serverless";
 import {
   computeClusteringProjection,

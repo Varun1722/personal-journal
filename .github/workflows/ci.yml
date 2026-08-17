@@ -1,9 +1,9 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   checks:
@@ -27,7 +27,3 @@ jobs:
       - run: pnpm test
 
       - run: pnpm lint
-
-      - run: pnpm build
-        env:
-          POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
