@@ -1,6 +1,6 @@
-import { neon } from "@neondatabase/serverless";
 import { NextResponse } from "next/server";
 import { getVoyageClient } from "@/utils/clients";
+import { getDatabase } from "@/utils/database";
 import { formatEmbeddingForPostgres } from "@/utils/chunking/embeddingUtils";
 import {
   SEARCH_RESULT_LIMIT,
@@ -11,8 +11,6 @@ import {
   HYBRID_KEYWORD_WEIGHT,
   VOYAGE_MODEL,
 } from "@/config/constants";
-
-const sql = neon(process.env.POSTGRES_URL!);
 
 type ScoreType = "keyword" | "hybrid" | "semantic";
 
@@ -107,6 +105,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    const sql = getDatabase();
 
     const metadataFilter = buildMetadataFilter(tags, chunkType);
     const metadataWhere = metadataFilter ? ` AND (${metadataFilter})` : "";

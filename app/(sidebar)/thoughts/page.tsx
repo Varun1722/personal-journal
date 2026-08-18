@@ -1,20 +1,20 @@
-import { neon } from "@neondatabase/serverless";
 import { Metadata } from "next";
 import ThoughtsClient from "./ThoughtsClient";
 import type { Thought } from "@/types/thoughts";
+import { getDatabase } from "@/utils/database";
 
 export const runtime = "edge";
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "thoughts",
   description: "unfiltered thoughts, stream of consciousness",
 };
 
-const sql = neon(process.env.POSTGRES_URL!);
 const INITIAL_LIMIT = 100;
 
 async function getInitialThoughts(): Promise<Thought[]> {
+  const sql = getDatabase();
   return sql`
     SELECT id, content, created_at
     FROM tweets

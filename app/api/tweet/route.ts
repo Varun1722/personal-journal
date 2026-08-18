@@ -1,8 +1,6 @@
-import { neon } from "@neondatabase/serverless";
 import { NextRequest } from "next/server";
 import { checkAdminAuth } from "@/utils/adminAuth";
-
-const sql = neon(process.env.POSTGRES_URL!);
+import { getDatabase } from "@/utils/database";
 
 export const runtime = "edge";
 
@@ -19,6 +17,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const sql = getDatabase();
     const result =
       await sql`INSERT INTO tweets(content, created_at) VALUES(${content}, NOW()) RETURNING *`;
     return new Response(JSON.stringify({ error: null, tweet: result[0] }), {
@@ -40,6 +39,7 @@ export async function DELETE(request: NextRequest) {
   const id = body.id;
 
   try {
+    const sql = getDatabase();
     await sql`DELETE FROM tweets WHERE id = ${id}`;
     return new Response(null, { status: 204 });
   } catch (err) {
