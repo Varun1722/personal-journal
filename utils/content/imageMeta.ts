@@ -17,6 +17,6 @@ export function getImageMeta(src: string): ImageMeta | null {
       ? JSON.parse(fs.readFileSync(IMAGE_META_JSON, "utf8"))
       : {};
   }
-  const match = src.match(/^\/images\/([^/]+)$/);
+  const match = src.match(/^\/images\/(.+)$/);
   return match ? (manifest![decodeURIComponent(match[1])] ?? null) : null;
 }

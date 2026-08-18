@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { neon } from "@neondatabase/serverless";
-
-const sql = neon(process.env.POSTGRES_URL!);
+import { getDatabase } from "@/utils/database";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   try {
+    const sql = getDatabase();
     const { searchParams } = new URL(request.url);
     const rawCursor = searchParams.get("cursor");
     const rawLimit = parseInt(searchParams.get("limit") ?? "100", 10);

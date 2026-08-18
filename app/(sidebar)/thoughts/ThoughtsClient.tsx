@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import type { ReactNode } from "react";
 import type { Thought } from "@/types/thoughts";
 
-const TZ = "America/New_York";
+const TZ = "Asia/Kolkata";
 const PAGE_SIZE = 100;
 
 function parseContent(content: string): ReactNode[] {

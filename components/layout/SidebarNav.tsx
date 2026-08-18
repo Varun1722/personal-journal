@@ -8,13 +8,12 @@ import { play } from "cuelume";
 import { SketchIcon } from "../ui/SketchIcon";
 
 const links = [
-  { path: "/posts", text: "archive", icon: "archive.svg" },
-  { path: "/random", text: "random", icon: "random.svg" },
-  { path: "/contact", text: "findme", icon: "contact.svg" },
-  { path: "/hn", text: "hn", icon: "news.svg" },
-  { path: "/now", text: "now", icon: "now.svg" },
-  { path: "/curius", text: "curius", icon: "bookmark.svg" },
+  { path: "/posts", text: "blog", icon: "archive.svg" },
+  { path: "/about", text: "about" },
   { path: "/projects", text: "projects", icon: "code.svg" },
+  { path: "/now", text: "now", icon: "now.svg" },
+  { path: "/contact", text: "findme", icon: "contact.svg" },
+  { path: "/curius", text: "curius", icon: "bookmark.svg" },
   { path: "/library", text: "library", icon: "library.svg" },
   { path: "/thoughts", text: "thoughts", icon: "thoughts.svg" },
   { path: "/gallery", text: "gallery", icon: "gallery.svg" },
@@ -105,7 +104,9 @@ export function SidebarNav() {
                 className={`w-full h-full${path === "/random" && spinning ? " dice-spin" : ""}`}
               />
             ) : (
-              text
+              <span className="w-full h-full flex items-center justify-center text-[10px] lowercase tracking-tight text-ink dark:text-chalk">
+                {text}
+              </span>
             )}
           </Link>
         ))}

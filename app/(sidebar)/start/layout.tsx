@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "start here",
-  description: "who is benedict neo",
+  description: "An introduction to Varun Goyal.",
 };
 
 export default function StartLayout({ children }: { children: ReactNode }) {

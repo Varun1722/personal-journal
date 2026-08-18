@@ -1,5 +1,11 @@
-import "dotenv/config";
-import { neon } from "@neondatabase/serverless";
+import * as dotenv from "dotenv";
+
+// `tsx` does not load Next.js's `.env.local` automatically. Keep the build
+// helper aligned with local Next development while preserving real deployment
+// environment variables (dotenv never overwrites an existing value by default).
+dotenv.config({ path: ".env.local" });
+dotenv.config();
+import { neon, type NeonQueryFunction } from "@neondatabase/serverless";
 import {
   computeClusteringProjection,
   computeVisualizationUMAP,
@@ -25,11 +31,24 @@ import type {
 import type { ChunkRow } from "../types/chunks";
 import fs from "fs";
 
-const sql = neon(process.env.POSTGRES_URL!);
+function isPostgresConnectionString(
+  value: string | undefined
+): value is string {
+  if (!value || value === "[SENSITIVE]") return false;
 
-// Cheap DB fingerprint: the map only changes when embeddings do, so a
-// count + latest timestamp is enough to decide whether to regenerate.
-async function getSourceFingerprint(): Promise<string> {
+  try {
+    const url = new URL(value);
+    return url.protocol === "postgres:" || url.protocol === "postgresql:";
+  } catch {
+    return false;
+  }
+}
+
+type SqlClient = NeonQueryFunction<false, false>;
+
+// The map only changes when embeddings do, so a count + latest timestamp
+// is enough to decide whether to regenerate.
+async function getSourceFingerprint(sql: SqlClient): Promise<string> {
   const rows = (await sql`
     SELECT count(*) AS count, max(created_at) AS latest
     FROM content_chunks
@@ -40,18 +59,23 @@ async function getSourceFingerprint(): Promise<string> {
 
 async function generateKnowledgeMap() {
   try {
-    // Check if database connection is available
-    if (!process.env.POSTGRES_URL) {
-      console.warn("⚠️  POSTGRES_URL not available during build");
+    const connectionString = process.env.POSTGRES_URL;
+
+    // Sensitive Vercel variables are intentionally redacted as [SENSITIVE]
+    // when pulled by an external CI build. The deployed runtime still receives
+    // the real value, but this generated artifact must use its existing data.
+    if (!isPostgresConnectionString(connectionString)) {
+      console.warn("⚠️  POSTGRES_URL is unavailable to this build");
       console.warn("⚠️  Skipping knowledge map generation");
       console.warn(
-        "⚠️  Knowledge map will use existing data or fail gracefully"
+        "⚠️  The deployed Vercel runtime can still use its sensitive database URL"
       );
       return;
     }
 
+    const sql = neon(connectionString);
     const outputPath = KNOWLEDGE_MAP_JSON;
-    const sourceFingerprint = await getSourceFingerprint();
+    const sourceFingerprint = await getSourceFingerprint(sql);
 
     if (fs.existsSync(outputPath)) {
       try {

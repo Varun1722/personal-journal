@@ -1,11 +1,12 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 
 export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get("title");
+  const postTitle = searchParams.get("title") ?? SITE_NAME;
 
   // Satori (ImageResponse) can't read woff2, so this route keeps its own
   // TTF copy; it renders server-side only and never ships to browsers.
@@ -24,7 +25,7 @@ export async function GET(req: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: "url(https://bneo.xyz/og-bg.jpg)",
+          backgroundImage: `url(${SITE_URL}/og-bg.jpg)`,
           fontFamily: '"Averia Serif Libre", serif',
         }}
       >

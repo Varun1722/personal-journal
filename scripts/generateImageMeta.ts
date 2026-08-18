@@ -1,8 +1,11 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 import fs from "fs";
 import sharp from "sharp";
 import { r2ListImages, r2GetImage } from "../utils/r2";
 import { DATA_DIR, IMAGE_META_JSON } from "../config/paths";
+import { GALLERY_PREFIX } from "../config/constants";
+
+dotenv.config({ path: ".env.local", quiet: true });
 
 interface ImageMeta {
   width: number;
@@ -19,7 +22,9 @@ async function main() {
     : {};
 
   const filenames = (await r2ListImages()).filter(
-    (name) => !name.includes("/") && /\.(jpg|jpeg|png|gif|webp)$/i.test(name)
+    (name) =>
+      (!name.includes("/") || name.startsWith(GALLERY_PREFIX)) &&
+      /\.(jpg|jpeg|png|gif|webp)$/i.test(name)
   );
 
   const manifest: Record<string, ImageMeta> = {};

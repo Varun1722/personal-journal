@@ -17,7 +17,13 @@ const ChronologyPage = () => (
           my life made up of small, meaningful moments
         </h1>
       </div>
-      <Timeline events={timelineEvents} />
+      {timelineEvents.length > 0 ? (
+        <Timeline events={timelineEvents} />
+      ) : (
+        <p className="text-sm text-ink-soft dark:text-chalk-soft">
+          timeline in progress
+        </p>
+      )}
     </div>
   </div>
 );

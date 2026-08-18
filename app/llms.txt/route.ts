@@ -1,6 +1,6 @@
 import { getPostMetadata } from "@/utils/content/posts";
 import { getWikiMetadata } from "@/utils/content/wiki";
-import { SITE_URL } from "@/config/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/config/site";
 
 export const dynamic = "force-static";
 
@@ -18,10 +18,9 @@ export async function GET() {
     .map((w) => `- [${w.title}](${SITE_URL}/wiki/${w.slug})`)
     .join("\n");
 
-  const body = `# Benedict Neo
+  const body = `# ${SITE_NAME}
 
-> personal blog of benedict neo — daily journal entries, essays on data science
-> and engineering, and a personal wiki. ${posts.length} posts and counting.
+> ${SITE_DESCRIPTION} ${posts.length} published blog posts.
 
 ## key pages
 

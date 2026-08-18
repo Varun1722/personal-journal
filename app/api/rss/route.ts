@@ -6,13 +6,13 @@ import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import rehypeStringify from "rehype-stringify";
 import { getPostMetadata, getPostContent } from "@/utils/content/posts";
-import { SITE_URL } from "@/config/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/config/site";
 
 export const dynamic = "force-static";
 
 const siteMetadata = {
-  title: "Benedict Neo",
-  description: "Daily writing about learnings, thoughts, and ideas",
+  title: SITE_NAME,
+  description: SITE_DESCRIPTION,
 };
 
 const processor = unified()
@@ -59,7 +59,7 @@ export async function GET() {
         <description>${siteMetadata.description}</description>
         <link>${rootUrl}</link>
         <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
-        <lastBuildDate>${new Date(posts[0].date).toUTCString()}</lastBuildDate>
+        <lastBuildDate>${new Date(posts[0]?.date ?? Date.now()).toUTCString()}</lastBuildDate>
         ${postItems}
       </channel>
     </rss>`;

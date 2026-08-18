@@ -45,7 +45,7 @@ export default function CuriusPage() {
           <p className="mb-5">
             stay{" "}
             <a
-              href="https://curius.app/benedict-neo"
+              href="https://curius.app/varun-goyal"
               className="text-ink dark:text-chalk hover:text-ink-soft dark:hover:text-chalk-muted transition-colors"
             >
               curius
