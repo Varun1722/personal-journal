@@ -25,7 +25,6 @@ export async function GET() {
 ## key pages
 
 - [all posts](${SITE_URL}/posts)
-- [about](${SITE_URL}/about)
 - [now](${SITE_URL}/now)
 - [rss feed](${SITE_URL}/api/rss)
 
