@@ -9,7 +9,7 @@ import { SketchIcon } from "../ui/SketchIcon";
 
 const links = [
   { path: "/posts", text: "blog", icon: "archive.svg" },
-  { path: "/about", text: "about" },
+  { path: "/about", text: "about", icon: "person-svgrepo-com.svg" },
   { path: "/projects", text: "projects", icon: "code.svg" },
   { path: "/now", text: "now", icon: "now.svg" },
   { path: "/contact", text: "findme", icon: "contact.svg" },
