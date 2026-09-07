@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const INTERESTS = [
   "solving hard problems",
-  "playing cricket",
+  "cricket",
   "badminton",
   "reading books and poetry",
   "paintings",
@@ -38,6 +38,36 @@ const StartPage = () => {
     <div>
       <article className="prose">
         <p>welcome to my corner on the internet</p>
+
+        <p>
+          Hii, I&apos;m Varun! I&apos;m a researcher, engineer, and sports
+          aficionado.
+        </p>
+
+        <p>
+          I train machines to be smart so that they can make people dumb (jk,
+          but it&apos;s happening).
+        </p>
+
+        <p>
+          Currently, I&apos;m an AI engineer at Virima Technologies, building
+          governance and guardrails for agents. In parallel, I&apos;m also
+          working on making a language model that can run on a CPU.
+        </p>
+
+        <p>
+          I studied Computer Science at LNMIIT, Jaipur, where I started working
+          on improving link prediction between drugs and diseases as a research
+          student, advised by Dr. Abhijit Adhikari. I also helped as a teaching
+          assistant in the ML lab and spent a semester doing a quantitative
+          study on social media&apos;s influence on body image, advised by Dr.
+          Rajbala.
+        </p>
+
+        <p>
+          Somewhere around that, I enjoyed quizzing, won a few, and then hosted
+          multiple quiz events.
+        </p>
 
         <p>
           i like{" "}
