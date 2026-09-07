@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Box, Code2, Pencil, Play, Scroll } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -90,6 +91,17 @@ const SECTIONS: LinkSectionProps[] = [
 const ContactPage = () => (
   <div>
     <article className="prose">
+      <div className="mb-8">
+        <Image
+          src="/images/gallery/1000139937.jpg"
+          alt="A cup of tea beside a stack of books and a rose"
+          width={735}
+          height={1030}
+          sizes="(max-width: 640px) 100vw, 320px"
+          className="m-0 h-auto w-full max-w-xs"
+        />
+      </div>
+
       <p>lover of tea and good conversation.</p>
 
       <p>email: varun170402[at]gmail[dot]com</p>
