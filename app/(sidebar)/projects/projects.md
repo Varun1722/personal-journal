@@ -5,7 +5,7 @@
 *Virima Technologies, India · Sep 2025 – Present*
 
 - Engineered a text-to-SQL engine and benchmarked it on the BIRD dataset, achieving Execution Accuracy (EX) of 61.2% on raw BIRD and 72.28% on cleaned BIRD.
-- Made the engine domain-specific using business rules, achieving over 95% query accuracy on highly complex database queries while maintaining sub-15-second execution runtimes at around $0.01 per query.
+- Made the engine domain-specific using business rules, achieving over 95% query accuracy while maintaining sub-15-second execution runtimes at around $0.01 per query.
 - Architected robust AI infrastructure by integrating Bifrost as an AI gateway and governance layer, implementing LLM Guard for strict guardrails, and using OpenTelemetry with SigNoz for comprehensive system observability.
 
 ### AI Engineer
