@@ -11,6 +11,7 @@
 - *1984* — George Orwell
 - *Rashmirathi* — Ramdhari Singh Dinkar
 - *Days at the Morisaki Bookshop* — Satoshi Yagisawa
+- *Thinking Fast and Slow* - Daniel Kahneman
 
 ## read
 

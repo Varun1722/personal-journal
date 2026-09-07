@@ -37,8 +37,6 @@ const StartPage = () => {
   return (
     <div>
       <article className="prose">
-        <p>welcome to my corner on the internet</p>
-
         <p>
           Hii, I&apos;m Varun! I&apos;m a researcher, engineer, and sports
           aficionado.
@@ -56,16 +54,16 @@ const StartPage = () => {
         </p>
 
         <p>
-          I studied Computer Science at LNMIIT, Jaipur, where I started working
+          I studied Computer Science at LNMIIT Jaipur, where I started working
           on improving link prediction between drugs and diseases as a research
-          student, advised by Dr. Abhijit Adhikari. I also helped as a teaching
-          assistant in the ML lab and spent a semester doing a quantitative
+          student, advised by Dr. Abhijit Adhikari. I helped as a teaching
+          assistant in the ML lab and also spent a semester doing a quantitative
           study on social media&apos;s influence on body image, advised by Dr.
           Rajbala.
         </p>
 
         <p>
-          Somewhere around that, I enjoyed quizzing, won a few, and then hosted
+          Somewhere around that, I enjoyed quizzing, won a few, and hosted
           multiple quiz events.
         </p>
 

@@ -14,6 +14,10 @@ const rawEvents: RawEvent[] = [
     description: "born in Jaipur, India",
   },
   {
+    year: "2007",
+    description: "got obsessed with cricket",
+  },
+  {
     year: "2021",
     description: "started college @LNMIIT",
   },
