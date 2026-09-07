@@ -93,12 +93,12 @@ const ContactPage = () => (
     <article className="prose">
       <div className="mb-8">
         <Image
-          src="/images/gallery/1000139937.jpg"
+          src="/images/contact/tea-books-rose.png"
           alt="A cup of tea beside a stack of books and a rose"
-          width={735}
-          height={1030}
-          sizes="(max-width: 640px) 100vw, 320px"
-          className="m-0 h-auto w-full max-w-xs"
+          width={1536}
+          height={1024}
+          sizes="(max-width: 768px) 100vw, 768px"
+          className="m-0 h-auto w-full max-w-2xl"
         />
       </div>
 
