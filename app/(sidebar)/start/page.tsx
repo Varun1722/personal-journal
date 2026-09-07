@@ -40,10 +40,6 @@ const StartPage = () => {
         <p>welcome to my corner on the internet</p>
 
         <p>
-          a little <Link href="/about">about me</Link>.
-        </p>
-
-        <p>
           i like{" "}
           <button type="button" onClick={cycle} className="start-interest">
             {currentInterest}
