@@ -20,7 +20,7 @@
 ## done?
 
 - [small-GPT](https://github.com/Varun1722/super-miniGPT): built a small language model from scratch
-- [heisenberg](drug-repurposing-heisenberg.vercel.app): a drug repurposing engine to find potential drug for rare diseases 
+- [heisenberg](https://drug-repurposing-heisenberg.vercel.app): a drug repurposing engine to find potential drug for rare diseases 
 - [voice-M.D.](https://github.com/Varun1722/Pharmacy-Voice-Agent): a voice-enabled virtual pharmacy assistant for interacting with a pharmacy system
 - [pep-guardiola-system](https://github.com/Varun1722/Player-ReID): football analysis system focused on player re-identification
 
